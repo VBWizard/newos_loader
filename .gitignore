@@ -1,0 +1,64 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+
+#Chris stuff
+*.iso
+*.bin
+chrisos
+kernel
+testmainprogramentry
+myhelloworld
+myhelloworld2
+build_num.h
+*.o.d
+/libLoad/dist/
+/libLoad/build/
+/myHelloWorld/build/
+/testMainProgramEntry/build/
+/myHelloWorld2/build/
+*.swp
+*debug*.asm
+*.sym
+*.log
+/fatLib/build/
+/libChrisOS/build/
+/libChrisOS/dist/
+core
+/sysEnter/build/
+/sysEnter/dist/
+gdb_history
+/aproj/cpptest/build/
+/aproj/cpptest/dist/
+*/cross-Linux/*
+
