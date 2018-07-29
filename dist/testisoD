@@ -1,0 +1,34 @@
+#!/bin/bash
+rm ./myos.iso
+./makeall
+if [ $? -ne 0 ] 
+then
+exit -1
+fi
+#strip --strip-debug --strip-unneeded Debug/cross-Linux-x86/chrisos
+#cp Debug/GNU-Linux/newos ~/src/os/build_dir/isodir/boot/myos.bin
+#grub-mkrescue -o myos.iso ~/src/os/build_dir/isodir > /dev/null
+qemu-system-i386 							\
+	-m 1536								\
+	-smp 4    							\
+	-usb                                            		\
+	-cdrom myos.iso 	\
+	-boot order=d							\
+	-drive file=./myos.iso,if=none,id=sata-cd-0,format=raw 			\
+	-drive file=~/qemu-test-disk.img,if=none,id=sata-disk-0,format=raw 	\
+        -drive file=/dev/disk/by-id/ata-ST31000528AS_5VP8R4ME,index=4,format=raw,cache=none,if=none,id=sata-disk-1 \
+        -drive file=~/qemu-test-disk3.img,if=none,id=sata-disk-2,format=raw 	\
+	-device ich9-ahci,id=ahci0 					\
+	-device ich9-ahci,id=ahci1 					\
+	-device ide-drive,drive=sata-disk-1,bus=ahci0.0			\
+	-device ide-cd,drive=sata-cd-0,bus=ahci0.1			\
+        -device ide-drive,drive=sata-disk-0,bus=ahci1.1 		\
+	-serial file:"qemu_port.log"					\
+	-d int,cpu_reset,pcall,guest_errors                        		\
+	-hda ~/qemu-test-disk2.img                                     \
+	$@ 
+#	--enable-kvm
+
+#drive=/home/yogi/qemu-usb-mass-storage.dsk
+#-hda ~/diskimage.img
+#-device ide-drive,drive=sata-disk-2,bus=ahci1.0                \

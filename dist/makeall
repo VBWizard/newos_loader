@@ -1,0 +1,6 @@
+pushd ../
+make clean
+./make_debug
+popd
+cp ~/src/newos_loader/dist/Debug/GNU-Linux/newos ~/src/newos_loader/build_dir/isodir/boot/myos.bin
+grub-mkrescue -o myos.iso ~/src/newos_loader/build_dir/isodir > /dev/null

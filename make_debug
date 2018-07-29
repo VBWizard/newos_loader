@@ -1,0 +1,4 @@
+#!/bin/bash
+#make -j8 CONF=Debug clean
+make -j 8 CONF=Debug build
+

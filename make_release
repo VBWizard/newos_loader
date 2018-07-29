@@ -1,0 +1,4 @@
+#!/bin/bash
+./local_make
+make -j6 CONF=Release clean
+make -j6 CONF=Release build

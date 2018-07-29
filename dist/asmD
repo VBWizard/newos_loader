@@ -1,0 +1,6 @@
+#!/bin/bash
+pushd ..
+./make_debug
+popd
+objdump -S -l Debug/GNU-Linux/newos -M intel-mnemonic --architecture=i386 > newos_all_debug.asm
+vi newos_all_debug.asm

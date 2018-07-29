@@ -1,0 +1,5 @@
+pushd ..
+./make_debug
+popd
+objdump -x -t Debug/GNU-Linux/newos > newosD.sym
+vi newosD.sym
